@@ -1,33 +1,25 @@
--- package.path = LIBDIR .. "/?.lua"
+-- package.path = library_dir .. "/?.lua"
 package.path = "/Users/mrxzx/Development/DioxusLabs/plugin-dev/plugin-library/library/?.lua"
 
-local log = require("log")
-local dir = require("dirs")
-local downloader = require("downloader")
+local plugin = require("plugin")
+local manager = require("manager")
 
-local manager = {
-    name = "Hello Dioxus Plugin",
-    repository = "https://github.com/mrxiaozhuox/hello-dioxus-plugin",
-    author = "YuKun Liu <mrxzx.info@gmail.com>",
-    version = "0.0.1",
-}
+manager.name = "Hello Dixous Plugin"
+manager.repository = "https://github.com/mrxiaozhuox/hello-dioxus-plugin"
+manager.author = "YuKun Liu <mrxzx.info@gmail.com>"
+manager.version = "0.0.1"
+
+
+-- init manager info to plugin api
+plugin.init(manager)
 
 manager.on_init = function ()
-    log.info("💻 Start to init `" .. manager.name .. "` ...");
+    plugin.log.info("Start to init")
 end
 
-manager.on_load = function ()
-    log.info("{" .. manager.name .. "} ~ plugin loaded.")
-    local r = downloader.clone_repo("https://github.com/mrxiaozhuox/dorea", dir.download_dir() .. "/dorea/");
-    if r then
-        print("OK")
-    else
-        print("GG")
-    end
-end
-
-manager.on_build_start = function ()
-    log.warn("system start to build")
+---@param info BuildStartInfo
+manager.build.on_start = function (info)
+    plugin.log.info("Build start: " .. info.name)
 end
 
 return manager
