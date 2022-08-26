@@ -17,7 +17,7 @@ manager.version = "0.0.1"
 plugin.init(manager)
 
 manager.on_init = function ()
-    log.info("Start to init")
+    log.info("Start to init plugin: " .. manager.name)
 end
 
 ---@param info BuildInfo
