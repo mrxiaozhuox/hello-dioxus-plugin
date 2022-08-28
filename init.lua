@@ -17,17 +17,35 @@ manager.version = "0.0.1"
 plugin.init(manager)
 
 manager.on_init = function ()
-    log.info("Start to init plugin: " .. manager.name)
+    -- when the first time plugin been load, this function will be execute.
+    -- system will create a `dcp.json` file to verify init state.
+    log.info("[plugin] Start to init plugin: " .. manager.name)
 end
 
 ---@param info BuildInfo
 manager.build.on_start = function (info)
-    log.info("Build starting: " .. info.name)
+    -- before the build work start, system will execute this function.
+    log.info("[plugin] Build starting: " .. info.name)
 end
 
 ---@param info BuildInfo
 manager.build.on_finish = function (info)
-    log.info("build finished: " .. info.name)
+    -- when the build work is done, system will execute this function.
+    log.info("[plugin] Build finished: " .. info.name)
+end
+
+---@param info ServeStartInfo
+manager.serve.on_start = function (info)
+    -- after this function done, console will clean all info and print console info.
+    -- so don't try to print any thing for user, this just a example what we can do. 
+    log.info("[plugin] Serve start: " .. info.name)
+end
+
+---@param info ServeRebuildInfo
+manager.serve.on_rebuild = function (info)
+    -- this function will after clean & print to run, so you can print some thing.
+    local files = plugin.tool.dump(info.changed_files)
+    log.info("[plugin] Serve rebuild: '" .. files .. "'")
 end
 
 return manager
