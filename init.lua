@@ -36,8 +36,7 @@ end
 
 ---@param info ServeStartInfo
 manager.serve.on_start = function (info)
-    -- after this function done, console will clean all info and print console info.
-    -- so don't try to print any thing for user, this just a example what we can do. 
+    -- this function will after clean & print to run, so you can print some thing.
     log.info("[plugin] Serve start: " .. info.name)
 end
 
@@ -47,5 +46,7 @@ manager.serve.on_rebuild = function (info)
     local files = plugin.tool.dump(info.changed_files)
     log.info("[plugin] Serve rebuild: '" .. files .. "'")
 end
+
+manager.serve.interval = 1000
 
 return manager
