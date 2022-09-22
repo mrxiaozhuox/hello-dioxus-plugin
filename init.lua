@@ -47,6 +47,10 @@ manager.serve.on_rebuild = function (info)
     log.info("[plugin] Serve rebuild: '" .. files .. "'")
 end
 
+manager.serve.on_shutdown = function ()
+    log.info("[plugin] Serve shutdown")
+end
+
 manager.serve.interval = 1000
 
 return manager
