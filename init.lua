@@ -13,7 +13,7 @@ manager.repository = "https://github.com/mrxiaozhuox/hello-dioxus-plugin"
 manager.author = "YuKun Liu <mrxzx.info@gmail.com>"
 manager.version = "0.0.1"
 
--- init manager info to plugin api
+-- init manager plugin api
 plugin.init(manager)
 
 manager.on_init = function ()
