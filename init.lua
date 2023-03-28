@@ -19,6 +19,7 @@ manager.on_init = function ()
     -- when the first time plugin been load, this function will be execute.
     -- system will create a `dcp.json` file to verify init state.
     log.info("Start to init plugin: " .. manager.name)
+    return true
 end
 
 ---@param info BuildInfo
