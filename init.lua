@@ -48,6 +48,7 @@ manager.serve.on_rebuild = function (info)
 end
 
 manager.serve.on_shutdown = function ()
+    --- this function will after serve shutdown.
     log.info("Serve shutdown")
 end
 
