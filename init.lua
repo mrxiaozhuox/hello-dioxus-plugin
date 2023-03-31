@@ -52,6 +52,4 @@ manager.serve.on_shutdown = function ()
     log.info("Serve shutdown")
 end
 
-manager.serve.interval = 1000
-
 return manager
