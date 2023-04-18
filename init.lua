@@ -1,5 +1,3 @@
-package.path = library_dir .. "/?.lua"
-
 local plugin = require("plugin")
 local manager = require("manager")
 
@@ -7,7 +5,7 @@ local manager = require("manager")
 local log = plugin.log
 
 -- plugin information
-manager.name = "Hello Dixous Plugin"
+manager.name = "Hello Dioxus Plugin"
 manager.repository = "https://github.com/mrxiaozhuox/hello-dioxus-plugin"
 manager.author = "YuKun Liu <mrxzx.info@gmail.com>"
 manager.version = "0.0.1"
